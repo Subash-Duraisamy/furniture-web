@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { db } from '../../firebase';
+import { db } from '../../firebase';  // Adjust if needed
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import './Productpage.css';
 
-const DEV_EMAILS = ["yourdeveloper@gmail.com", "anotherdev@gmail.com"]; // developer emails
+const DEV_EMAILS = ["yourdeveloper@gmail.com", "anotherdev@gmail.com"]; // Add developer emails here
 
 const ProductAdmin = () => {
   const auth = getAuth();
@@ -19,18 +19,29 @@ const ProductAdmin = () => {
       if (currentUser) {
         setUser(currentUser);
         setIsDev(DEV_EMAILS.includes(currentUser.email));
+      } else {
+        setUser(null);
+        setIsDev(false);
       }
     });
     return () => unsubscribe();
   }, [auth]);
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    if (isDev) {
+      fetchProducts();
+    } else {
+      setProducts([]);
+    }
+  }, [isDev]);
 
   const fetchProducts = async () => {
-    const snapshot = await getDocs(collection(db, 'products'));
-    setProducts(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    try {
+      const snapshot = await getDocs(collection(db, 'products'));
+      setProducts(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   };
 
   const addProduct = async () => {
@@ -38,20 +49,40 @@ const ProductAdmin = () => {
       alert("Please fill all fields");
       return;
     }
-    await addDoc(collection(db, 'products'), newProduct);
-    setNewProduct({ name: '', price: '', description: '' });
-    fetchProducts();
+    try {
+      await addDoc(collection(db, 'products'), newProduct);
+      setNewProduct({ name: '', price: '', description: '' });
+      fetchProducts();
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("Failed to add product.");
+    }
   };
 
   const updateProduct = async () => {
-    await updateDoc(doc(db, 'products', editProductData.id), editProductData);
-    setEditProductData(null);
-    fetchProducts();
+    try {
+      await updateDoc(doc(db, 'products', editProductData.id), {
+        name: editProductData.name,
+        price: editProductData.price,
+        description: editProductData.description,
+      });
+      setEditProductData(null);
+      fetchProducts();
+    } catch (error) {
+      console.error("Error updating product:", error);
+      alert("Failed to update product.");
+    }
   };
 
   const deleteProduct = async (id) => {
-    await deleteDoc(doc(db, 'products', id));
-    fetchProducts();
+    if (!window.confirm("Are you sure you want to delete this product?")) return;
+    try {
+      await deleteDoc(doc(db, 'products', id));
+      fetchProducts();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      alert("Failed to delete product.");
+    }
   };
 
   if (!isDev) {
@@ -62,7 +93,7 @@ const ProductAdmin = () => {
     <div className="product-page">
       <h1>Manage Products</h1>
 
-      {/* Add Product */}
+      {/* Add Product Section */}
       <div className="admin-section">
         <h2>Add Product</h2>
         <input
@@ -85,7 +116,7 @@ const ProductAdmin = () => {
         <button onClick={addProduct}>Add Product</button>
       </div>
 
-      {/* List + Edit/Delete */}
+      {/* List of Products */}
       <div className="product-list">
         {products.map(prod => (
           <div key={prod.id} className="product-card">

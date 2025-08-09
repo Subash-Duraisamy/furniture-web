@@ -8,24 +8,24 @@ const DeveloperManagement = () => {
   const [loading, setLoading] = useState(true);
   const SUPER_ADMIN_EMAIL = "subash111425@gmail.com";
 
-  const fetchDevelopers = async () => {
-    setLoading(true);
-    try {
-      const querySnapshot = await getDocs(collection(db, 'developers'));
-      const devs = [];
-      querySnapshot.forEach((doc) => {
-        devs.push({ id: doc.id, ...doc.data() });
-      });
-      setDevelopers(devs);
-    } catch (error) {
-      console.error("Error fetching developers:", error);
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const fetchDevelopers = async () => {
+      setLoading(true);
+      try {
+        const querySnapshot = await getDocs(collection(db, 'developers'));
+        const devs = [];
+        querySnapshot.forEach((doc) => {
+          devs.push({ id: doc.id, ...doc.data() });
+        });
+        setDevelopers(devs);
+      } catch (error) {
+        console.error("Error fetching developers:", error);
+      }
+      setLoading(false);
+    };
+
     fetchDevelopers();
-  }, []);
+  }, [db]);  // You can include db here, if it's stable
 
   const handleDelete = async (email) => {
     if (email === SUPER_ADMIN_EMAIL) {
@@ -40,7 +40,13 @@ const DeveloperManagement = () => {
     try {
       await deleteDoc(doc(db, 'developers', email));
       alert(`Developer ${email} deleted successfully.`);
-      fetchDevelopers();
+      // Refresh the list after deletion
+      const querySnapshot = await getDocs(collection(db, 'developers'));
+      const devs = [];
+      querySnapshot.forEach((doc) => {
+        devs.push({ id: doc.id, ...doc.data() });
+      });
+      setDevelopers(devs);
     } catch (error) {
       console.error("Error deleting developer:", error);
       alert("Failed to delete developer.");
@@ -69,10 +75,11 @@ const DeveloperManagement = () => {
                 <td>{email}</td>
                 <td>{role}</td>
                 <td>
-                  {email !== SUPER_ADMIN_EMAIL && (
+                  {email !== SUPER_ADMIN_EMAIL ? (
                     <button onClick={() => handleDelete(email)}>Delete</button>
+                  ) : (
+                    <span>Super Admin</span>
                   )}
-                  {email === SUPER_ADMIN_EMAIL && <span>Super Admin</span>}
                 </td>
               </tr>
             ))}
