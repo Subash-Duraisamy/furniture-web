@@ -77,10 +77,15 @@ const DeveloperApprovalList = () => {
       <h2>Developer Signup Requests</h2>
       <ul>
         {requests.map((req) => (
-          <li key={req.id} style={{ marginBottom: '1rem', borderBottom: '1px solid #ccc', paddingBottom: '1rem' }}>
+          <li
+            key={req.id}
+            style={{ marginBottom: '1rem', borderBottom: '1px solid #ccc', paddingBottom: '1rem' }}
+          >
             <p><strong>Name:</strong> {req.name || "No Name"}</p>
             <p><strong>Email:</strong> {req.email}</p>
-            <button onClick={() => approveRequest(req)} style={{ marginRight: '10px' }}>Approve</button>
+            <button onClick={() => approveRequest(req)} style={{ marginRight: '10px' }}>
+              Approve
+            </button>
             <button onClick={() => rejectRequest(req.id)}>Reject</button>
           </li>
         ))}

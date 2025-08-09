@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { db } from '../../firebase';  // Adjust if needed
+import { db } from '../../firebase';  // Adjust path if needed
 import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
 import './Productpage.css';
 
@@ -8,7 +8,6 @@ const DEV_EMAILS = ["yourdeveloper@gmail.com", "anotherdev@gmail.com"]; // Add d
 
 const ProductAdmin = () => {
   const auth = getAuth();
-  const [user, setUser] = useState(null);
   const [isDev, setIsDev] = useState(false);
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({ name: '', price: '', description: '' });
@@ -17,10 +16,8 @@ const ProductAdmin = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setUser(currentUser);
         setIsDev(DEV_EMAILS.includes(currentUser.email));
       } else {
-        setUser(null);
         setIsDev(false);
       }
     });
