@@ -1,0 +1,37 @@
+/* Layout.css */
+
+/* Ensure the page uses full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Main layout wrapper */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar stays at the top */
+.layout-navbar {
+  position: sticky; /* or fixed if you want it always visible */
+  top: 0;
+  z-index: 1000;
+}
+
+/* Space between navbar and content if navbar is fixed */
+.layout-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f8f9fa; /* light grey background */
+}
+
+/* Footer styling */
+.layout-footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}

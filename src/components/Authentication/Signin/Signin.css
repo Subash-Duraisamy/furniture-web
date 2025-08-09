@@ -1,0 +1,95 @@
+.In {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.input-box {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 35px 10px 12px; /* leave space for icon */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
+}
+
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 1.2rem;
+}
+
+.remember-forgot a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+.remember-forgot a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #1a5ed8;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 13px;
+}
+
+.register-link a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

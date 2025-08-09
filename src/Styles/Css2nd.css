@@ -1,0 +1,259 @@
+
+
+@keyframes TopRightMoveMent {
+    0% {
+   transform: translateX(0%);
+    }
+     
+50%{
+    transform: translateX(79%) ;
+}
+
+
+
+   100% {
+    transform: translateX(0);
+    /* color: transparent */
+    
+    }
+    
+}
+
+.RollText{
+    padding-bottom: 20px;
+
+}
+
+
+.RollText {
+    animation-name: TopRightMoveMent;
+    animation-duration: 50s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    
+    font-family: "Montserrat",sans-serif;
+    font-weight: 500px;
+    text-decoration: none;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    color: aliceblue;
+    font-weight: 900;
+    letter-spacing: 12px;
+    /* height: 100px; */  
+    width: 100vw;
+    background-color: #24252A;
+    /* margin-bottom: 100px; */
+    /* padding: 10px; */
+    /* overflow: hidden; */
+    /* padding: 10px; */
+    /* box-sizing: border-box; */
+
+}
+/* .alpha-main{
+    /* background-image: url("./sofa.gif"); */
+    /* padding-top: 20px;
+  width: 100vw;
+  height: 55px;
+  text-align: start; */
+  /* padding-bottom: 72px; 
+ 
+} */
+/* .imgs{
+    height: 55px;
+    font-size: 30px;
+    letter-spacing: 9px;
+    font-family: "Montserrat",sans-serif;
+    color: aliceblue;
+    
+   
+    
+} */
+
+/* .title{
+    font-weight: 900;
+    margin-top: 50px;
+    /* height: 100px; */
+    /* text-align: center;
+    align-items: center;
+    justify-content: center; */
+    /* font-family: "Montserrat",sans-serif;
+    cursor: pointer; 
+} */
+
+
+
+.Main 
+{
+    width: 100vw;
+    height: 60px;
+    padding-bottom: 30px;
+    background-color: #24252A ;
+}
+/* .DownText{
+    width: 100vw;
+    height: 60px;
+} */
+.RollText{
+    width:100vw;
+    height:90px;
+    /* margin: 10px 0 30px; */
+    line-height: 80px;
+    /* font-size: 40px; */
+}
+/* .ADD{
+    padding-bottom: 40px;
+    margin-top: 40px;
+} */
+.White{
+    color:  #24252A;
+    text-align: start;
+    padding-bottom: 30px;
+    height: 30px;
+    font-family: "Montserrat",sans-serif;
+    letter-spacing: 10px;
+   
+}
+.current1{
+    color: #0088a9;
+}
+
+.SubTitle{
+    padding-top: 75px;
+    padding-left: 80px;
+    text-align: start;
+    color: grey;
+    font-weight: 900 ;
+    /* position: absolute; */
+    /* transform: translateY(-50%); */
+    z-index: 2;
+    transition: all 0.3s ease 0s;
+}
+.SubTitle:hover{
+    color: black;
+}
+.small{
+    /* padding-top: 9px;
+    padding-left: 0; */
+    margin-top: 20px;
+}
+
+
+.container{
+    display: inline-block;
+    /* backdrop-filter: blur(100%); */
+    
+}
+.text{
+    font-size: 15px;
+    color: grey;
+    letter-spacing: 3px;
+    font-size: monospace;
+    border-right: 5px solid;
+    width: 100vw;
+    
+    height: auto;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    animation: 
+    typing 2s steps(30),
+    cursor .4s step-end infinite alternate;
+}
+
+@keyframes cursor{
+    50%{
+        border-color: transparent;
+    }
+
+    
+    
+}
+
+
+
+@keyframes typing{
+    from{
+        width: 0;
+
+    }
+    to{
+        width: 100000px;
+    }
+    
+}
+h3{
+    font-size: 80px;
+    margin: 10px 0 30px;
+    line-height: 80px;
+}
+.but1
+{
+    color: #fbfcfd;
+    padding: 10px 25px;
+    background: black;
+    
+    /* border: 1px solid #fff; */
+    border-radius: 20px;
+    /* outline: none; */
+    cursor: pointer;
+}
+
+.aa{
+    border-radius: 20%;
+    padding-top: 75px;
+    padding-left: 80px;
+    text-align: start;
+    color: grey;
+    font-weight: 900 ;
+    /* position: absolute; */
+    /* transform: translateY(-50%); */
+    z-index: 2;
+
+}
+.but11{
+    /* padding-top: 200px; */
+    color: #fbfcfd;
+    padding: 10px 25px;
+    background: black;
+    text-align: end;
+    
+    /* border: 1px solid #fff; */
+    border-radius: 20px;
+    /* outline: none; */
+   
+}
+.inside{
+    border-radius: 20%;
+    cursor: pointer;
+}
+.inside:hover{
+    border-radius: 20%;
+    cursor: pointer;
+    color: aqua;
+}
+
+.footer-container {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-container p {
+    margin: 0;
+  }
+  
+  .footer-container a {
+    color: white;
+    
+    margin: 0 10px;
+  }
+  .last-font{
+    font-family: "Montserrat",sans-serif;
+    /* font-family: "Montserrat",sans-serif; */
+  }
+  
+  

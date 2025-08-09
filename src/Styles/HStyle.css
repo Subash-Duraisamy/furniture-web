@@ -1,0 +1,77 @@
+.Home1{
+    box-sizing: border-box;
+    margin:0;
+    padding: 0;
+    background-color: #24252A;
+    min-height: 100vh;
+  
+
+
+}
+
+
+li, a, .button{
+    font-family: "Montserrat",sans-serif;
+    font-weight: 500px;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+    /* FOR ANCHOR TAG WE USE TEXT DECORATION  SINCE TO REMOVE THE UNDERLINE */
+    
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content:baseline;
+}
+
+.logo
+{
+    cursor: pointer;
+    margin-right: auto;
+    width: 600px;
+    /* background-color:rgb(102, 32, 134); */
+    background-color:white;
+    border-radius: 2.5px;
+    font-family: "Montserrat",sans-serif;
+    letter-spacing: 120px;
+    font-weight: bolder;
+
+}
+
+.titles
+{
+    padding-top:10px ;
+    list-style: none;
+
+}
+
+
+.titles li{
+   display: inline-block;
+   /* SAME LINE IT GETS SPREADED like Home , Products, links */
+   padding: 0px 20px;
+}
+
+.titles  li a{
+    transition: all 0.3s ease 0s;
+}
+.titles  li a:hover{
+    color: #0088a9;
+}
+
+.button{
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 169, 1);
+    border: none;
+    border-radius: 50px;
+    cursor:pointer ;
+    transition: all 0.3s ease 0s;
+
+}
+
+.button:hover{
+    color: red;
+}

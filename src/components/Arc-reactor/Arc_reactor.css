@@ -1,0 +1,84 @@
+.In {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("https://rare-gallery.com/mocahbig/26098-MountainColorful-Mountains.png") no-repeat center/cover;
+}
+
+.likebody {
+    position: relative;
+    width: 520px; /* slightly bigger to prevent clipping */
+    height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; /* allow orbit to be seen fully */
+    perspective: 1000px;
+}
+
+.center-element {
+    width: 150px;
+    height: 150px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    border-radius: 50%;
+    position: absolute;
+    animation: orbit 10s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 6px grey;
+    transition: all 0.3s ease;
+}
+
+.center-element button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
+
+.center-element:hover {
+    animation-play-state: paused;
+    box-shadow: 0 0 0 6px red;
+    background-color: black;
+}
+
+.center-element button:hover {
+    font-size: 22px;
+    color: white;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(170px) rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg) translateX(170px) rotate(-360deg);
+    }
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+    .likebody {
+        width: 320px;
+        height: 320px;
+    }
+
+    .center-element {
+        width: 100px;
+        height: 100px;
+    }
+
+    @keyframes orbit {
+        0% {
+            transform: rotate(0deg) translateX(105px) rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg) translateX(105px) rotate(-360deg);
+        }
+    }
+}
